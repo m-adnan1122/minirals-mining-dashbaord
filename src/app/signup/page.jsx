@@ -6,7 +6,7 @@ import { Box, Stack } from "@mui/material";
 const Page = () => {
   return (
     <Box 
-      width="100%" 
+       width="100%" 
       minHeight="100vh" 
       bgcolor="rgb(249, 249, 249)" 
       sx={{ 

@@ -7,7 +7,7 @@ const page = () => {
   return (
     <Box width="100%" height="100%">
         <Head />
-        <PricingCards/>
+         <PricingCards/>
     </Box>
   )
 }
