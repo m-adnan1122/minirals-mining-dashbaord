@@ -31,6 +31,8 @@ export default function DashboardProfile() {
       sx={{
         py: { xs: 3, md: 1 },
         color: "text.primary",
+        ml: 6,
+        mt: 4
       }}
     >
       <Stack direction="row" gap={{ xs: 3, md: 6 }}>

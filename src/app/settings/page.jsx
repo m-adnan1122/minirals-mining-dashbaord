@@ -7,23 +7,17 @@ import SidebarTabs from '@/components/SideBar';
 import { Stack } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 
-const MainLayout = ({ selectedTab, children, sidebar, profile, setSelectedTab }) => {
+const page = ({ selectedTab }) => {
   const [selected, setSelected] = useState("General Settings");
 
 
   const renderContent = () => {
-    switch (selectedTab) {
-      case 'settings':
         switch (selected) {
           case "General Settings": return <Settings />;
           case "Account Security": return <Security />;
-          case "Data Preferences": return <DataPreferences />;
           case "Integrations Settings": return <Integration />;
           default: return null;
         }
-      default:
-        return null;
-    }
   };
 
   const tabs = [
@@ -37,9 +31,8 @@ const MainLayout = ({ selectedTab, children, sidebar, profile, setSelectedTab })
       direction="row"
       width="100%"
       height="100%"
-      bgcolor={selectedTab === "settings" ? "rgb(249, 249, 249)" : "#ffffff"}
+      bgcolor="rgb(249, 249, 249)"
     >
-      {selectedTab === "settings" && (
         <Stack
           width="226px"
           bgcolor="white"
@@ -50,7 +43,6 @@ const MainLayout = ({ selectedTab, children, sidebar, profile, setSelectedTab })
         >
           <SidebarTabs tabs={tabs} selected={selected} setSelected={setSelected} />
         </Stack>
-      )}
 
       <Stack pl={6} pt={5} flex={1}>
         {renderContent()}
@@ -59,4 +51,4 @@ const MainLayout = ({ selectedTab, children, sidebar, profile, setSelectedTab })
   );
 };
 
-export default MainLayout;
+export default page;

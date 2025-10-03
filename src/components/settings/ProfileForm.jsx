@@ -21,7 +21,6 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 
 const theme = createTheme({
   typography: {
-    fontFamily: "var(--font-geist-sans), Inter, system-ui, Arial, sans-serif",
     fontSize: 14,
   },
   shape: { borderRadius: 12 },

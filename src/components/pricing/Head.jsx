@@ -19,9 +19,11 @@ import {
   Language as LanguageIcon,
 } from "@mui/icons-material";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Head({ selectedTab, setSelectedTab, setProfile }) {
   const [language, setLanguage] = useState("en");
+  const router = useRouter();
 
   const handleChange = (event) => {
     setLanguage(event.target.value);
@@ -29,12 +31,12 @@ export default function Head({ selectedTab, setSelectedTab, setProfile }) {
 
   // ✅ Define all tabs in one array
   const tabs = [
-    { label: "Dashboard", value: "dashboard", icon: "/icons/dashboard.png" },
-    { label: "Data Analysis", value: "data analysis", icon: "/icons/Group.png" },
-    { label: "Workflow Integration", value: "workflow", icon: "/icons/work.png" },
-    { label: "Data Management", value: "data management", icon: "/icons/data.png" },
-    { label: "User Management", value: "user management", icon: "/icons/user.png" },
-    { label: "Settings", value: "settings", icon: "/icons/setting.png" },
+    { label: "Dashboard", value: "/dashboard", icon: "/icons/dashboard.png" },
+    { label: "Data Analysis", value: "/data-analysis", icon: "/icons/Group.png" },
+    { label: "Workflow Integration", value: "/workflow", icon: "/icons/work.png" },
+    { label: "Data Management", value: "/data-management", icon: "/icons/data.png" },
+    { label: "User Management", value: "/user-management", icon: "/icons/user.png" },
+    { label: "Settings", value: "/settings", icon: "/icons/setting.png" },
   ];
 
  const navButtonStyle = (tabName) => ({
@@ -173,7 +175,7 @@ export default function Head({ selectedTab, setSelectedTab, setProfile }) {
 
           <Divider sx={{ borderColor: "rgba(3, 73, 163, 1)" }} />
           <IconButton>
-                      <Avatar src="/profile.png" sx={{ width: "34.43px", height: "34.43px" }}  onClick={()=> setProfile(true)} />
+                      <Avatar src="/profile.png" sx={{ width: "34.43px", height: "34.43px" }}  onClick={()=> router.push("/profile")} />
 
           </IconButton>
         </Box>
@@ -204,8 +206,9 @@ export default function Head({ selectedTab, setSelectedTab, setProfile }) {
               }
               sx={navButtonStyle(tab.value)}
             onClick={() => {
-              setSelectedTab(tab.value) 
-              setProfile(false)}}
+              router.replace(`${tab.value}`)
+              
+              }}
 
             >
               {tab.label}

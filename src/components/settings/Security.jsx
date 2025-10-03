@@ -32,7 +32,6 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
 
 const theme = createTheme({
   typography: {
-    fontFamily: "var(--font-geist-sans), Inter, system-ui, Arial, sans-serif",
     fontSize: 14,
   },
   shape: { borderRadius: 12 },
@@ -92,7 +91,7 @@ function Label({ children, info, rightAdornment }) {
       }}
     >
       <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
-        <Typography variant="body2" sx={{ fontWeight: 600 }}>
+        <Typography  variant="body2" sx={{ fontWeight: 600, color: "black" }}>
           {children}
         </Typography>
         {info ? (
