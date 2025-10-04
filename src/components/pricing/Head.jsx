@@ -19,9 +19,18 @@ import {
   Language as LanguageIcon,
 } from "@mui/icons-material";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
-export default function Head({ selectedTab, setSelectedTab, setProfile }) {
+export default function Head({ selectedTab, setSelectedTab, setProfile }) {  
+  const pathname = usePathname();
+
+  // check if current page is /signup
+  if (pathname === "/signup") {
+    return null; // or <Redirect /> or custom JSX
+  }
+
+ 
+
   const [language, setLanguage] = useState("en");
   const router = useRouter();
 
@@ -123,6 +132,7 @@ export default function Head({ selectedTab, setSelectedTab, setProfile }) {
               borderRadius: "10px",
               pt: "10px",
             }}
+            onClick={()=> router.push("/pricing")}
           >
             Pro Subscription
           </Button>

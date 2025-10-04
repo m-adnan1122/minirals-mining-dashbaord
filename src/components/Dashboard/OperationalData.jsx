@@ -107,7 +107,7 @@ export default function OperationalData() {
 
   return (
     <Box sx={{ p: { xs: 2, md: 3 }, bgcolor: panel }}>
-      <Typography variant="h6" sx={{ mb: 2, fontWeight: 400, fontSize: "24px" }}>
+      <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, fontSize: "24px" }}>
         Operational Data
       </Typography>
 

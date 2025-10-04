@@ -224,7 +224,7 @@ export default function AlertsAndRisks() {
         </Grid>
 
         {/* Risk Radar */}
-        <Typography variant="h6" sx={{ fontWeight: 400, fontSize: "20px", mb: 3, mt: 6 }}>
+        <Typography variant="h6" sx={{ fontWeight: 600, fontSize: "24px", mb: 3, mt: 6 }}>
           Risk Radar
         </Typography>
         <Grid container spacing={1
@@ -243,21 +243,37 @@ export default function AlertsAndRisks() {
                   <Typography  sx={{ fontWeight: 500, fontSize:"12px", color: "rgba(73, 73, 73, 1)" }}>
                     sort by: 
                   </Typography>
-                 <FormControl 
-  size="small" 
-  sx={{ minWidth: 10, height: 30, borderRadius: "6px" }}
+<FormControl
+  size="small"
+  sx={{ minWidth: 100, height: 30, borderRadius: "6px" }}
 >
   <Select
     value={sortBy}
     onChange={(e) => setSortBy(e.target.value)}
     displayEmpty
-    sx={{ height: "100%", borderRadius: "6px", fontSize: "13px", fontWeight: 500 }}
+    sx={{
+      height: "100%",
+      borderRadius: "6px",
+      fontSize: "13px",
+      fontWeight: 500,
+    }}
+    MenuProps={{
+      disableScrollLock: true, // prevents body shift
+      PaperProps: {
+        sx: {
+          zIndex: 2000,   // make sure dropdown floats above Risk Map
+          width: 120,     // or match parent width
+        },
+      },
+    
+    }}
   >
     <MenuItem value="Region">Region</MenuItem>
     <MenuItem value="Business Unit">Business Unit</MenuItem>
     <MenuItem value="Severity">Severity</MenuItem>
   </Select>
 </FormControl>
+
 
                   </Stack>
                 }
@@ -351,7 +367,16 @@ export default function AlertsAndRisks() {
       <CardContent sx={{ flex: 1, display: "flex", flexDirection: "column", p: 1 }}>
         {/* Region Select */}
         <FormControl size="small" fullWidth sx={{ mb: 1 }}>
-          <Select labelId="region-label" value={region} onChange={(e) => setRegion(e.target.value)}>
+          <Select labelId="region-label" value={region} onChange={(e) => setRegion(e.target.value)} 
+             MenuProps={{
+      disableScrollLock: true, // prevents body shift
+      PaperProps: {
+        sx: {
+          zIndex: 2000,   // make sure dropdown floats above Risk Map
+        },
+      },
+    
+    }}>
             <MenuItem value="Geographical Risk">Geographical Risk</MenuItem>
             <MenuItem value="Operational Risk">Operational Risk</MenuItem>
             <MenuItem value="Compliance Risk">Compliance Risk</MenuItem>
