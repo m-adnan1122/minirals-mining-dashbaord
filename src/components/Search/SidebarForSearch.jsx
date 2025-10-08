@@ -11,7 +11,7 @@ import {
   Paper,
 } from "@mui/material";
 
-export default function SidebarTabs({
+export default function SidebarForSearch({
   header = "Settings",
   tabs = [],
   selected,
@@ -20,12 +20,12 @@ export default function SidebarTabs({
   return (
     <Paper elevation={0} sx={{ width: "226px" }}>
       {/* Header */}
-      <Typography variant="subtitle1" sx={{ fontWeight: 500, fontSize: "18px", mb: 2, textAlign:"center", pt:3, pb:0.5 }}>
+      <Typography variant="subtitle1" sx={{ fontWeight: 500, fontSize: "20px", mb: 2, textAlign:"center", pt:3, pb:0.5 }}>
         {header}
       </Typography>
 
       {/* Tabs */}
-      <List disablePadding sx={{pl:2}} >
+      <List disablePadding sx={{pl:3}} >
         {tabs.map((tab) => {
           const isSelected = selected === tab.label;
 
@@ -35,32 +35,20 @@ export default function SidebarTabs({
               selected={isSelected}
               onClick={() => setSelected(tab.label)}
               sx={{
-                borderRadius: 1.5,
+                borderTopLeftRadius: "10px",
+                borderBottomLeftRadius: "10px",
                 mb: 0.5,
                 color: "rgba(99, 101, 126, 1)", // default text color
                 "&:hover": {
                   color: "rgba(0, 0, 0, 1)", // text + icon on hover
-                  "& .MuiListItemIcon-root": {
-                    color: "rgba(0, 0, 0, 1)",
-                  },
                 },
                 "&.Mui-selected": {
-                  bgcolor: "transparent",
-                  color: "rgba(0, 0, 0, 1)", // text + icon selected
+                  bgcolor: "rgba(253, 126, 20, 1)",
+                  color: "#ffffff", // text + icon selected
                   fontWeight: 600,
-                  "& .MuiListItemIcon-root": {
-                    color: "rgba(0, 0, 0, 1)",
-                  },
-                  "&::after": {
-                    content: '""',
-                    position: "absolute",
-                    right: 0,
-                    top: "20%",
-                    bottom: "20%",
-                    width: "3px",
-                    bgcolor: "rgba(253, 126, 20, 1)",
-                    borderRadius: "4px",
-                  },
+                   "&:hover": {
+                  bgcolor: "rgba(253, 126, 20, 1)",
+                },
                 },
                 position: "relative",
               }}
@@ -91,8 +79,8 @@ export default function SidebarTabs({
               <ListItemText
                 primary={tab.label}
                 primaryTypographyProps={{
-                  fontSize: "14px",
-                  fontWeight: isSelected ? 500 : 400,
+                  fontSize: "16px",
+                  fontWeight: isSelected ? 600 : 500,
                 }}
               />
             </ListItemButton>
