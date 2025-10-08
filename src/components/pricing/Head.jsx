@@ -41,10 +41,10 @@ export default function Head({ selectedTab, setSelectedTab, setProfile }) {
   // ✅ Define all tabs in one array
   const tabs = [
     { label: "Dashboard", value: "/dashboard", icon: "/icons/dashboard.png" },
-    { label: "Data Analysis", value: "/data-analysis", icon: "/icons/Group.png" },
-    { label: "Workflow Integration", value: "/workflow", icon: "/icons/work.png" },
-    { label: "Data Management", value: "/data-management", icon: "/icons/data.png" },
-    { label: "User Management", value: "/user-management", icon: "/icons/user.png" },
+    { label: "Data Analysis", value: "/data-analysis", icon: "/icons/data-analysis.png" },
+    { label: "Workflow Integration", value: "0", icon: "/icons/work.png" },
+    { label: "Data Management", value: "0", icon: "/icons/data.png" },
+    { label: "User Management", value: "0", icon: "/icons/user.png" },
     { label: "Settings", value: "/settings", icon: "/icons/setting.png" },
   ];
 
@@ -196,7 +196,7 @@ export default function Head({ selectedTab, setSelectedTab, setProfile }) {
         <Box sx={{ display: "flex", gap: 2, alignItems: "center", ml: "65px" }}>
           {tabs.map((tab) => (
             <Button
-              key={tab.value}
+              key={tab.label}
               startIcon={
                 <Box
                   width="20px"
@@ -216,6 +216,7 @@ export default function Head({ selectedTab, setSelectedTab, setProfile }) {
               }
               sx={navButtonStyle(tab.value)}
             onClick={() => {
+              tab.value !== "0" &&
               router.replace(`${tab.value}`)
               
               }}
@@ -226,7 +227,7 @@ export default function Head({ selectedTab, setSelectedTab, setProfile }) {
           ))}
 
           {/* Logout Button */}
-          <Box sx={{ ml: "148px" }}>
+          <Box sx={{ ml: "165px" }}>
             <Button
               startIcon={
                 <Box
