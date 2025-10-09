@@ -1,13 +1,10 @@
 "use client";
 
-import BrowseSearch from '@/components/Search/BrowseSearch';
-import RequestAvailbility from '@/components/Search/RequestAvailbility';
-import SearchAssay from '@/components/Search/SearchAssay';
-import SearchHeader from '@/components/Search/SearchHeader';
 import { SearchProduct } from '@/components/Search/SearchProduct';
+import { AddProduct } from '@/components/Search/Sell/AddProduct';
 import SellSearchAssay from '@/components/Search/Sell/SellSearchAssay';
+import SellSearchHeader from '@/components/Search/Sell/SellSearchHeader';
 import SidebarForSearch from '@/components/Search/SidebarForSearch';
-import Integration from '@/components/settings/Integration';
 import { Stack, Typography } from '@mui/material';
 import { useState } from 'react';
 
@@ -19,7 +16,7 @@ const page = () => {
         switch (selected) {
           case  "Select a Product": return <SearchProduct/>;
           case  "Search In Assays": return <SellSearchAssay />;
-          case  "Browse Search Results": return<BrowseSearch/>;
+          case  "Add Products": return<AddProduct/>;
           default: return null;
         }
    };
@@ -27,8 +24,15 @@ const page = () => {
   const tabs = [
     { label: "Select a Product" },
     { label: "Search In Assays" },
-    { label: "Browse Search Results" },
+    { label: "Add Products" },
   ]
+
+  const defaultLabels = [
+  "Select a Product",
+  "Search in Assays",
+  "Add Products",
+];
+
 
   return (
     <Stack
@@ -56,7 +60,7 @@ const page = () => {
               >
                 Find products matching your own criteria
               </Typography>
-        <SearchHeader active={selected} />
+        <SellSearchHeader active={selected} labels={defaultLabels} />
         {renderContent()}
       </Stack>
     </Stack>

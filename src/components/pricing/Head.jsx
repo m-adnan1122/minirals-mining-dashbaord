@@ -192,8 +192,8 @@ export default function Head({ selectedTab, setSelectedTab, setProfile }) {
       </Toolbar>
 
       {/* Navigation Tabs */}
-      <Box sx={{ px: 3, py: 2, backgroundColor: "#fff" }}>
-        <Box sx={{ display: "flex", gap: 2, alignItems: "center", ml: "65px" }}>
+      <Box sx={{ px: 3, py: 2, backgroundColor: "#fff", display:"flex", justifyContent:"space-between" }}>
+        <Box sx={{ display: "flex", gap: 2, alignItems: "center", ml: "65px" ,}}>
           {tabs.map((tab) => (
             <Button
               key={tab.label}
@@ -225,10 +225,10 @@ export default function Head({ selectedTab, setSelectedTab, setProfile }) {
               {tab.label}
             </Button>
           ))}
-
-          {/* Logout Button */}
-          <Box sx={{ ml: "165px" }}>
-            <Button
+         </Box>
+                    {/* Logout Button */}
+              <Box mr={10}>
+                                  <Button 
               startIcon={
                 <Box
                   width="20px"
@@ -246,8 +246,8 @@ export default function Head({ selectedTab, setSelectedTab, setProfile }) {
             >
               Logout
             </Button>
-          </Box>
-        </Box>
+                    </Box>
+
       </Box>
     </AppBar>
   );

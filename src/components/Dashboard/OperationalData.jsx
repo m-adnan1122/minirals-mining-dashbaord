@@ -106,7 +106,8 @@ export default function OperationalData() {
   const eventColor = (k) => (k === "warning" ? orange : k === "success" ? green : red)
 
   return (
-    <Box sx={{ p: { xs: 2, md: 3 }, bgcolor: panel }}>
+    <Box sx={{display:"flex", justifyContent:"center"}}>
+      <Box sx={{ p: { xs: 2, md: 3 }, bgcolor: panel }}>
       <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, fontSize: "24px" }}>
         Operational Data
       </Typography>
@@ -204,6 +205,7 @@ export default function OperationalData() {
           <MaintenanceCalendarCard />
         </Grid>
       </Grid>
+    </Box>
     </Box>
   )
 }

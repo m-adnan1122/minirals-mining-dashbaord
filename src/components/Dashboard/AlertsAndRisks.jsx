@@ -114,7 +114,8 @@ export default function AlertsAndRisks() {
   const [total, setTotal] = React.useState(62)
 
   return (
-    <ThemeProvider theme={theme}>
+    <Box sx={{display:"flex", justifyContent:"center"}}>
+      <ThemeProvider theme={theme}>
       <CssBaseline />
       <Box sx={{ p: { xs: 2, md: 3 }, maxWidth: "100%", mx: "auto",  }}>
         {/* Alerts */}
@@ -227,8 +228,7 @@ export default function AlertsAndRisks() {
         <Typography variant="h6" sx={{ fontWeight: 600, fontSize: "24px", mb: 3, mt: 6 }}>
           Risk Radar
         </Typography>
-        <Grid container spacing={1
-        } height={"381px"}>
+        <Grid container spacing={{lg:1}} height={"381px"}>
           <Grid item xs={12} md={7}>
             <Card elevation={0} sx={{  width: "706px", p: 1, height: "381px", }} >
               <CardHeader
@@ -521,5 +521,7 @@ export default function AlertsAndRisks() {
 
       </Box>
     </ThemeProvider>
+    </Box>
+    
   );
 }
