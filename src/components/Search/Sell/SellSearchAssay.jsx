@@ -13,8 +13,7 @@ import {
   FormControl,
 } from "@mui/material"
 import InfoOutlined from "@mui/icons-material/InfoOutlined"
-import AddRounded from "@mui/icons-material/AddRounded"
-import CloudUploadOutlined from "@mui/icons-material/CloudUploadOutlined"
+import Range from "./Range"
 
 const ORANGE = "#F97316"
 const TEXT = "#111827"
@@ -96,44 +95,47 @@ function UploadDropZone({ onFiles }) {
       onDragLeave={() => setIsOver(false)}
       onDrop={onDrop}
       sx={{
-        border: "2px dashed",
-        borderColor: isOver ? ORANGE : BORDER,
+        border: "2px dashed rgba(253, 126, 20, 1)",
         bgcolor: "#fff",
         borderRadius: 2,
         p: 4,
-        minHeight: 200,
+        minHeight: "158px",
+        width:"295px",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         position: "relative",
       }}
     >
-      <Stack alignItems="center" spacing={1}>
-          <Button
-          size="small"
-          variant="contained"
-          sx={{
-            textTransform: "none",
-            bgcolor: ORANGE,
-            "&:hover": { bgcolor: "#ea6b0c" },
-            borderRadius: 2,
-            px: 2.5,
-          }}
-          onClick={() => {
-            const input = document.createElement("input")
-            input.type = "file"
-            input.multiple = true
-            input.accept = "image/*"
-            input.onchange = () => {
-              const files = input.files ? Array.from(input.files) : []
-              onFiles?.(files)
-            }
-            input.click()
-          }}
-        >
-          Select files
-        </Button>
-      </Stack>
+     <Stack alignItems="center" spacing={1}>
+  <Box
+    width="29px"
+    height="29px"
+    sx={{
+      backgroundImage: "url('plus.png')",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      transition: "filter 0.3s ease",
+      cursor: "pointer", // 👈 makes it visually clickable
+      "&:hover": {
+        filter: "brightness(1.2)",
+        // 👈 adds hover feedback
+      },
+    }}
+    onClick={() => {
+      const input = document.createElement("input")
+      input.type = "file"
+      input.multiple = true
+      input.accept = "image/*"
+      input.onchange = () => {
+        const files = input.files ? Array.from(input.files) : []
+        onFiles?.(files)
+      }
+      input.click()
+    }}
+  />
+</Stack>
     </Box>
   )
 }
@@ -168,69 +170,15 @@ export default function SellSearchAssay() {
         backgroundColor:"#fff",
       }}
     >
+
+
       {/* Header Row */}
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={7.5}>
-          <Stack spacing={2}>
-            <Typography sx={{ fontSize: 16, fontWeight: 600, color: TEXT }}>
-              1. Specify The Primary Assay Range (%)
-            </Typography>
 
-            <Stack spacing={1}>
-              <Typography sx={{ fontSize: 20, fontWeight: 700, color: TEXT }}>
-                Lithium (Li) Ore{" "}
-                <Box component="span" sx={{ color: ORANGE, fontWeight: 600 }}>
-                  [Li20]
-                </Box>
-              </Typography>
-
-              <Grid container spacing={2} alignItems="flex-end">
-                <Grid item xs={6} sm="auto">
-                  <Typography sx={labelSx}>From</Typography>
-                  <TextField
-                    fullWidth
-                    placeholder="0.000"
-                    value={from}
-                    onChange={(e) => setFrom(e.target.value)}
-                    size="small"
-                    sx={inputSx}
-                  />
-                </Grid>
-                <Grid item xs={6} sm="auto">
-                  <Typography sx={labelSx}>To</Typography>
-                  <TextField
-                    fullWidth
-                    placeholder="0.000"
-                    value={to}
-                    onChange={(e) => setTo(e.target.value)}
-                    size="small"
-                    sx={inputSx}
-                  />
-                </Grid>
-
-                <Grid item xs={12} sm="auto">
-                  <Button
-                    startIcon={<AddRounded />}
-                    variant="contained"
-                    sx={{
-                      textTransform: "none",
-                      bgcolor: ORANGE,
-                      "&:hover": { bgcolor: "#ea6b0c" },
-                      borderRadius: 2,
-                      px: 2.5,
-                      py: 1,
-                    }}
-                  >
-                    Add
-                  </Button>
-                </Grid>
-              </Grid>
-            </Stack>
-          </Stack>
-        </Grid>
-
-        <Grid item xs={12} md={4.5}>
-          <Stack spacing={1}>
+      <Stack direction={"row"} spacing={23}>    
+      <Range />
+      <Grid container spacing={3} >
+             <Grid item xs={12} md={4.5}>
+          <Stack spacing={1} pt={5}>
             <Typography sx={{ fontSize: 16, fontWeight: 600, color: TEXT }}>
               Upload Images
             </Typography>
@@ -238,6 +186,7 @@ export default function SellSearchAssay() {
           </Stack>
         </Grid>
       </Grid>
+      </Stack>
 
       {/* Enter Details */}
       <Stack spacing={2} sx={{ mt: 4 }}>
@@ -460,6 +409,7 @@ export default function SellSearchAssay() {
             borderColor: ORANGE,
             borderRadius: 2,
             px: 3,
+            py:1.2,
             "&:hover": { borderColor: "#ea6b0c", bgcolor: "transparent" },
           }}
         >
@@ -473,6 +423,7 @@ export default function SellSearchAssay() {
             "&:hover": { bgcolor: "#ea6b0c" },
             borderRadius: 2,
             px: 3,
+            py:1.3,
           }}
         >
           Continue

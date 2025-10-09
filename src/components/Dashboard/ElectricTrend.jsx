@@ -59,6 +59,8 @@ const formatKwh = (v) => `${v.toLocaleString()} kWh`
 
 export default function ElectricTrend() {
   return (
+        <Box sx={{display:"flex", justifyContent:"center"}}>
+    
     <Paper
       elevation={0}
       sx={{
@@ -257,5 +259,6 @@ export default function ElectricTrend() {
         </Grid>
       </Grid>
     </Paper>
+    </Box>
   )
 }
