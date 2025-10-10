@@ -25,7 +25,7 @@ export default function Head({ selectedTab, setSelectedTab, setProfile }) {
   const pathname = usePathname();
 
   // check if current page is /signup
-  if (pathname === "/signup") {
+  if (pathname === "/signup" || pathname === "/"  ) {
     return null; // or <Redirect /> or custom JSX
   }
 
