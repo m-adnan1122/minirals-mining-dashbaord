@@ -33,8 +33,8 @@ const Second = ({ backgroundSrc = "/frame.png" }) => {
       <Box width={"314px"} height={"260px"}
        textAlign={"center"} fontWeight={500} 
        position={"absolute"}
-       top={{md:1105,xl:1520}} bgcolor={"#fff"}
-       right={{lg:80, xl: 510}}
+       top={{md: 800,lg:1105,xl:1520}} bgcolor={"#fff"}
+       right={{md:40,lg:80, xl: 510}}
        fontSize={"16px"} border={"5px solid rgba(253, 126, 20, 1)"} borderRadius={"7px"}  p={1} textOverflow={"hidden"}>
               {
                 "TCF provides a unified platform integrating mining reports and news, backed by cutting-edge machine learning technology. Our platform transforms scattered technical data into a streamlined and searchable interface, empowering users to effortlessly identify potential mineral assets, scrutinize technical reports, and make well-informed decisions."
@@ -78,8 +78,8 @@ const Second = ({ backgroundSrc = "/frame.png" }) => {
             width: { xs: "400px", sm: "500px", md: '630px' ,lg:'654px' },
             height: { xs: "400px", sm: "500px", md: '630px' ,lg:'674px' },
             position: "absolute",
-            top: { xs: "-200px", sm: "-150px", md: "820px",lg:'900px', xl: "1400px" },
-            right:{lg:-430, xl:-390,},
+            top: { xs: "-200px", sm: "-150px", md: "620px",lg:'900px', xl: "1400px" },
+            right:{md:-430,lg:-430, xl:-260,},
             display: { xs: "none", sm: "block" },
           }}
         >
@@ -110,21 +110,21 @@ background: " radial-gradient(60% 60% at 75% 45%, rgba(255, 141, 46, 0.50) 0%, r
 
         <Box 
           sx={{
-            width: { xs: "400px", sm: "500px", md: '330px' ,lg:'646px' },
-            height: { xs: "400px", sm: "500px", md: '330px' ,lg:'646px' },
+            width: { xs: "400px", sm: "500px", md: '630px' ,lg:'646px' },
+            height: { xs: "400px", sm: "500px", md: '630px' ,lg:'646px' },
             position: "absolute",
-            top: { xs: "-200px", sm: "-150px", md: "820px",lg:"1850px",xl:'2340px' },
+            top: { xs: "-200px", sm: "-150px", md: "1320px",lg:"1850px",xl:'2340px' },
             left:0,
 
             display: { xs: "none", sm: "block" },
           }}
         >
           <Box  
-           width={"30%"}
+           width={"32%"}
              
                       sx={{
               overflow: "hidden",
-background: " radial-gradient(60% 60% at 75% 45%, rgba(255, 141, 46, 0.50) 0%, rgba(255, 180, 67, 0.18) 48%, rgba(255, 180, 67, 0) 65%)",
+// background: " radial-gradient(60% 60% at 75% 45%, rgba(255, 141, 46, 0.50) 0%, rgba(255, 180, 67, 0.18) 48%, rgba(255, 180, 67, 0) 65%)",
               display: "flex",
               objectFit:"cover"
             }}
