@@ -5,27 +5,26 @@ const data= [
   {
     title: "Precision Exploration Hub",
     description:
-      "Explore an array of mining projects and companies effortlessly. Customize search across regions, mineral types, profiles, and beyond.",
+        "Explore an array of mining projects and companies effortlessly through our Strategic Mining Discovery Center. Customize your search across regions, mineral types, company profiles, resource estimates, risk levels, and beyond.",
     // Replace this with your icon URL (PNG/SVG). Example: "https://your-cdn.com/icons/exploration.png"
     iconSrc: "/icons2/3.png",
     alt: "Exploration icon",
   },
   {
     title: "Dynamic Industry Insights Hub",
-    description:
-      "Stay ahead of the latest mining trends and social chatter. Get curated news and social media updates.",
+    description:"Stay abreast of the latest mining trends and social chatter with our Dynamic Industry Insights Hub. Dive into curated news and social media updates, gaining a comprehensive view of the mining landscape.",
     iconSrc: "/icons2/1.png",
     alt: "Insights icon",
   },
   {
     title: "AI Driven Insights",
-    description: "Access forward‑thinking perspectives and in‑depth content evaluations with personalized suggestions.",
+    description: "Access forward-thinking perspectives and in-depth content evaluations, complemented by personalized suggestions for akin projects and companies.",
     iconSrc: "/icons2/2.png",
     alt: "AI icon",
   },
   {
     title: "Our Mobile App",
-    description: "A central hub for all your mining needs. Detailed reports and interactive features on the go.",
+    description: "Functioning as a central hub for all your mining needs, Our App provides effortless access to detailed reports and interactive features.",
     iconSrc: "/icons2/4.png",
     alt: "Mobile app icon",
   },
@@ -61,7 +60,7 @@ export default function Third({
           {heading}
         </Typography>
 
-        <Grid container spacing={{ xs: 4, md: 6, lg:6 }}>
+        <Grid container spacing={{ xs: 4, md: 1, lg:3 }}>
           {features.map((feat, idx) => (
             <Grid key={idx} item xs={12} sm={6} md={3}>
               <Card
@@ -70,7 +69,8 @@ export default function Third({
                   bgcolor: "transparent",
                   color: "inherit",
                   textAlign: "center",
-                  width:"248px",
+                  alignItems:"center",
+                 width:{ xs: "222px", md: "238px", lg:"255px"},
                 }}
               >
                 <CardContent>
@@ -99,7 +99,7 @@ export default function Third({
                         maxWidth: 320,
                         lineHeight: 1.6,
                         color: "#fff" ,
-                        fontWeight: 400,  fontSize:"14px", 
+                        fontWeight: 400,  fontSize:"12px", 
                       }}
                     >
                       {feat.description}
@@ -117,8 +117,8 @@ export default function Third({
                   width: { xs: "400px", sm: "500px", md: '630px' ,lg:'646px' },
                   height: { xs: "400px", sm: "500px", md: '630px' ,lg:'646px' },
                   position: "absolute",
-                  top: { xs: "-200px", sm: "-150px", md: "2090px",lg:"2380px",xl:'2820px' },
-                  right: {md: -430, lg: -450, xl:-300},
+                  top: { xs: "-200px", sm: "-150px", md: "1870px",lg:"2380px",xl:'2820px' },
+                  right: {md: -430, lg: -450, xl:-440},
       
                   display: { xs: "none", sm: "block" },
                 }}
@@ -151,7 +151,7 @@ export default function Third({
                   width: { xs: "400px", sm: "500px", md: '630px' ,lg:'646px' },
                   height: { xs: "400px", sm: "500px", md: '630px' ,lg:'646px' },
                   position: "absolute",
-                  top: { xs: "-200px", sm: "-150px", md: "2600px",lg:"3100px",xl:'3820px' },
+                  top: { xs: "-200px", sm: "-150px", md: "2430px",lg:"3100px",xl:'3820px' },
                   left: 0,
       
                   display: { xs: "none", sm: "block",  },
@@ -173,6 +173,75 @@ export default function Third({
                       height: { sm: "243px", md: "240px" },
                       overflow: "hidden",
                       backgroundImage: "url('/for.png')",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  />
+                </Box>
+              </Box> 
+       <Box 
+                sx={{
+                  width: { xs: "400px", sm: "500px", md: '630px' ,lg:'646px' },
+                  height: { xs: "400px", sm: "500px", md: '630px' ,lg:'646px' },
+                  position: "absolute",
+                  top: { xs: "-200px", sm: "-150px", md: "4230px",lg:"4800px",xl:'5490px' },
+                  right:"-420px",
+      
+                  display: { xs: "none", sm: "block",  },
+                }}
+              >
+                <Box  
+                 width={"35%"}
+                   
+                            sx={{
+                    overflow: "hidden",
+      // background: " radial-gradient(60% 60% at 75% 45%, rgba(255, 141, 46, 0.50) 40%, rgba(255, 180, 67, 0.18) 60%, rgba(255, 180, 67, 0) 65%)",
+                    display: "flex",
+                    objectFit:"cover"
+                  }}
+                >
+                  <Box
+                    sx={{
+                      width: { sm: "300px", md: "354px" },
+                      height: { sm: "243px", md: "240px" },
+                      overflow: "hidden",
+                      backgroundImage: "url('/stone.png')",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  />
+                </Box>
+              </Box> 
+      
+       <Box 
+                sx={{
+                  width: { xs: "400px", sm: "500px", md: '330px' ,lg:'646px' },
+                  height: { xs: "400px", sm: "500px", md: '330px' ,lg:'646px' },
+                  position: "absolute",
+                  top: { xs: "-200px", sm: "-150px", md: "5170px",lg:"5700px",xl:'6400px' },
+                  left:"0",
+      
+                  display: { xs: "none", sm: "block",  },
+                }}
+              >
+                <Box  
+                 width={"35%"}
+                   
+                            sx={{
+                    overflow: "hidden",
+      // background: " radial-gradient(60% 60% at 75% 45%, rgba(255, 141, 46, 0.50) 40%, rgba(255, 180, 67, 0.18) 60%, rgba(255, 180, 67, 0) 65%)",
+                    display: "flex",
+                    objectFit:"cover"
+                  }}
+                >
+                  <Box
+                    sx={{
+                      width: { sm: "300px", md: "354px" },
+                      height: { sm: "243px", md: "240px" },
+                      overflow: "hidden",
+                      backgroundImage: "url('/stone1.png')",
                       backgroundSize: "cover",
                       backgroundPosition: "center",
                       backgroundRepeat: "no-repeat",

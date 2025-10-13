@@ -83,8 +83,9 @@ function Label({
         mb: 0.75,
       }}
     >
-      <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
-        <Typography variant="body2" sx={{ fontWeight: 600 }}>
+      <Box sx={{ display: "flex", alignItems: "center", gap: 0.5,  }}>
+        <Typography variant="body2" sx={{ fontWeight: 400, fontFamily:"outfit",
+    fontSize: '14px', }}>
           {children}
         </Typography>
         {info ? (
@@ -195,7 +196,7 @@ export default function Page() {
                 </Box>
 
                 <Box sx={{ mt: 1 }}>
-                  <Button variant="contained" color="error">
+                  <Button variant="contained" color="error" sx={{boxShadow:"none"}}>
                     Delete Account
                   </Button>
                 </Box>
@@ -243,7 +244,7 @@ export default function Page() {
                     rightAdornment={
                       <Typography
                         variant="caption"
-                        sx={{ color: "primary.main", fontWeight: 600, pl: 32 }}
+                        sx={{ color: "primary.main", fontWeight: 400, pl:30 }}
                       >
                         Current Time: 10:02pm
                       </Typography>
@@ -278,10 +279,10 @@ export default function Page() {
                     mt: 1,
                   }}
                 >
-                  <Button variant="contained" sx={{color:"#ffffff"}} >
+                  <Button variant="contained" sx={{color:"#ffffff", boxShadow:"none", height:"46px", ":hover":{boxShadow:"none"}}} >
                     Save Changes
                   </Button>
-                  <Button variant="outlined" color="#1A1A1A">Cancel</Button>
+                  <Button variant="outlined" color="#1A1A1A" sx={{boxShadow:"none", height:"46px", ":hover":{boxShadow:"none"}}}>Cancel</Button>
                 </Box>
               </Box>
             </Grid>

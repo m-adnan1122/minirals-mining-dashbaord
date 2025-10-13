@@ -79,7 +79,7 @@ const Second = ({ backgroundSrc = "/frame.png" }) => {
             height: { xs: "400px", sm: "500px", md: '630px' ,lg:'674px' },
             position: "absolute",
             top: { xs: "-200px", sm: "-150px", md: "620px",lg:'900px', xl: "1400px" },
-            right:{md:-430,lg:-430, xl:-260,},
+            right:{md:-430,lg:-430, xl:-448,},
             display: { xs: "none", sm: "block" },
           }}
         >

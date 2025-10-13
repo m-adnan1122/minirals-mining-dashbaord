@@ -52,7 +52,7 @@ export default function Footer({
       <Box sx={{ height: 4, bgcolor: accentColor }} />
 
       <Container maxWidth="lg" sx={{ py: { xs: 6, md: 8 } }}>
-        <Grid container spacing={13} alignItems="flex-start">
+        <Grid container spacing={{md:4,lg:13}} alignItems="flex-start">
           {/* Left: Logo + Subscribe */}
           <Grid item xs={12} md={4}>
             <Box

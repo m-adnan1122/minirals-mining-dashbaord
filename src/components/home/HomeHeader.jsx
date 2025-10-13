@@ -72,9 +72,9 @@ export default function HomeHeader({ selectedTab, setSelectedTab, setProfile }) 
   return (
     <AppBar
       position="static"
-      sx={{ bgcolor: "background.paper", boxShadow: "none" }}
+      sx={{ bgcolor: "background.paper", boxShadow: "none",width:"auto" }}
     >
-      <Toolbar sx={{ justifyContent: "space-between", py: 2 }}>
+      <Toolbar  sx={{ justifyContent: "space-between", py: 2 }}>
         <Stack direction={"row"}>
           {/* Logo */}
           <Box
@@ -164,7 +164,17 @@ export default function HomeHeader({ selectedTab, setSelectedTab, setProfile }) 
               fontSize: "16px",
               fontWeight: 500,
               "& fieldset": { border: "none" },
-            }}
+                 }}
+    MenuProps={{
+      disableScrollLock: true, // prevents body shift
+      PaperProps: {
+        sx: {
+          zIndex: 2000,   // make sure dropdown floats above Risk Map
+          width: 80,     // or match parent width
+        },
+      },
+    
+    }}
           >
             <MenuItem value="en">
               <Typography variant="body2" sx={{ color: "text.secondary" }}>

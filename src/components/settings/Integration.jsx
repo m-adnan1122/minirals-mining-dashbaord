@@ -21,6 +21,7 @@ import {
   Button,
   Chip,
   Divider,
+  Badge,
 } from "@mui/material";
 import {
   ViewModule as ViewModuleIcon,
@@ -72,7 +73,7 @@ const INTEGRATIONS = [
     name: "Intuit QuickBooks",
     description:
       "QuickBooks is an accounting software package developed and marketed by Intuit.",
-    logoQuery: "quickbooks logo",
+    logoQuery: "/integration/6.png",
     initials: "qb",
     category: "Finance",
   },
@@ -81,7 +82,7 @@ const INTEGRATIONS = [
     name: "BigCommerce",
     description:
       "BigCommerce is a leading e-commerce software platform that provides startups and established companies with everything they need to build a better online business.",
-    logoQuery: "bigcommerce logo",
+    logoQuery: "/integration/5.png",
     initials: "bc",
     category: "All Integrations",
   },
@@ -90,8 +91,8 @@ const INTEGRATIONS = [
     name: "NetSuite",
     description:
       "Make smarter, faster decisions using the world's most deployed cloud ERP suite.",
-    logoQuery: "netsuite logo",
-    initials: "n",
+    logoQuery: "/integration/4.png",
+    initials: "nt",
     category: "All Integrations",
     connected: true,
   },
@@ -100,7 +101,7 @@ const INTEGRATIONS = [
     name: "Mailchimp",
     description:
       "Mailchimp makes it easy to sell stuff online, even if you don't have an e-commerce store.",
-    logoQuery: "mailchimp logo",
+    logoQuery: "/integration/7.png",
     initials: "mc",
     category: "Communications",
   },
@@ -108,7 +109,7 @@ const INTEGRATIONS = [
     id: "excel",
     name: "Microsoft Excel",
     description: "Excel learns your patterns, organizing your data to save you time.",
-    logoQuery: "microsoft excel logo",
+    logoQuery: "/integration/1.png",
     initials: "xl",
     category: "All Integrations",
   },
@@ -117,65 +118,97 @@ const INTEGRATIONS = [
     name: "Salesforce",
     description:
       "Salesforce offers a wide variety of CRM categories and systems to meet your needs.",
-    logoQuery: "salesforce logo",
+    logoQuery: "/integration/2.png",
     initials: "sf",
     category: "All Integrations",
   },
 ];
 
-function PillTabs({ value, onChange }) {
+const tabsData = [
+  { label: 'All Integrations', value: 'All Integrations', count: 6 },
+  { label: 'Finance', value: 'Finance', count: 1 },
+  { label: 'Communications', value: 'Communications', count: 1 },
+  { label: 'Storage', value: 'Storage', count: 0 },
+]
+
+ 
+
+const PillTabs = ({ value, onChange }) => {
   return (
     <Tabs
-  value={value}
-  onChange={(_, v) => onChange(v)}
-  TabIndicatorProps={{ style: { display: "none" } }}
-  sx={{
-    minHeight: 0,
-    "& .MuiTab-root": {
-      minHeight: 0,
-      height: 32,
-      px: 1.5,
-      mx: 0.75,
-      borderRadius: "8px",
-      fontWeight: 400,
-      fontSize: "16px",
-      color: "rgba(24, 24, 27, 1)", // default black text
-    },
-    "& .MuiTab-root.Mui-selected": {
-      bgcolor: "primary.main",
-      color: "rgba(255, 255, 255, 1)", // white text
-    },
-  }}
->
-
-
-      <Tab disableRipple label="All Integrations" value="All Integrations" />
-      <Tab disableRipple label="Finance" value="Finance" />
-      <Tab disableRipple label="Communications" value="Communications" />
-      <Tab disableRipple label="Storage" value="Storage" />
+      value={value}
+      onChange={(_, v) => onChange(v)}
+      TabIndicatorProps={{ style: { display: 'none' } }}
+      sx={{
+        minHeight: 0,
+        '& .MuiTab-root': {
+          minHeight: 0,
+          height: 32,
+          px: 1.5,
+          mx: 0.75,
+          borderRadius: '8px',
+          fontWeight: 400,
+          fontSize: '14px',
+          color: 'rgba(24, 24, 27, 1)',
+          textTransform: 'none',
+        },
+        '& .MuiTab-root.Mui-selected': {
+          bgcolor: 'primary.main',
+          color: 'rgba(255, 255, 255, 1)',
+        },
+      }}
+    >
+      {tabsData.map((tab) => {
+        const isSelected = value === tab.value
+        return (
+          <Tab
+            key={tab.value}
+            disableRipple
+            value={tab.value}
+            label={
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, pr:1 }}>
+                {tab.label}
+                {isSelected && (
+                  <Badge
+                    badgeContent={tab.count}
+                    color="default"
+                    sx={{
+                      '& .MuiBadge-badge': {
+                        backgroundColor: 'rgba(255, 255, 255, 1)',
+                        color: 'rgba(24, 24, 27, 1)',
+                        fontSize: '0.65rem',
+                        height: 16,
+                        width: 16,
+                        px: 0.5,
+                      },
+                    }}
+                  />
+                )}
+              </Box>
+            }
+          />
+        )
+      })}
     </Tabs>
-  );
+  )
 }
 
-function IntegrationCard({ item }) {
+function IntegrationCard({ item, view  }) {
   return (
     <Card sx={{ height: "100%", borderRadius: "8px", mt: 2 }} variant="outlined" >
       <CardContent
-        sx={{ p: 2.5, display: "flex", flexDirection: "column", gap: 1,  width: "290px",
+        sx={{ p: 2.5, pl:3, display: "flex", flexDirection: "column", gap: 1,  width: view === "grid"? "290px": "900px",
               height: "200px", pt:3 }}
       >
         <Stack  spacing={1} >
           <Avatar
             variant="rounded"
-            src={`/placeholder.svg?height=28&width=28&query=${encodeURIComponent(
-              item.logoQuery
-            )}`}
+            src={`${item.logoQuery}`}
             alt={`${item.name} logo`}
             sx={{
               width: 32,
               height: 32,
-              borderRadius: 2,
-              bgcolor: "#f3f4f6",
+              borderRadius: 0,
               color: "text.primary",
               fontSize: 14,
               fontWeight: 700,
@@ -184,7 +217,9 @@ function IntegrationCard({ item }) {
           >
             {item.initials}
           </Avatar>
-          <Typography variant="subtitle1">{item.name}</Typography>
+          <Typography variant="subtitle1" sx={{  
+                fontWeight: 500,
+                fontSize: "18px",}}>{item.name}</Typography>
         </Stack>
 
         <Typography
@@ -196,6 +231,8 @@ function IntegrationCard({ item }) {
             WebkitLineClamp: 2,
             overflow: "hidden",
             minHeight: 40,
+                fontWeight: 400,
+                fontSize: "14px",
           }}
         >
           {item.description}
@@ -209,8 +246,10 @@ function IntegrationCard({ item }) {
               color="primary"
               size="small"
               sx={{
-                fontWeight: 700,
                 color: "#fff",
+                bgcolor:"rgba(253, 126, 20, 1)",
+                fontWeight: 400,
+                                boxShadow: "3",                fontSize: "12px",
                 borderRadius: "8px",
                 height: 28,
                 "& .MuiChip-label": { px: 1.25 },
@@ -220,14 +259,26 @@ function IntegrationCard({ item }) {
             <Button
               size="small"
               variant="contained"
-              color="primary"
-              startIcon={<BoltIcon  />}
+              endIcon={    <Box
+      component="img"
+      src="/integration/3.png"
+      alt="grid"
+      sx={{
+        width: 18,
+        height: 18,
+        borderRadius: "8px",
+        objectFit: "cover",
+      }}
+    />}
               sx={{
                 borderRadius:"8px",
                 height: 28,
                 px: 1.25,
-                boxShadow: "none",
-                color: "#fff"
+                boxShadow: "3",
+                color: "#fff",
+                bgcolor:"rgba(253, 126, 20, 1)",
+                fontWeight: 400,
+                fontSize: "12px",
               }}
             >
               Connect
@@ -238,13 +289,14 @@ function IntegrationCard({ item }) {
             size="small"
             variant="text"
             color="inherit"
-            endIcon={<ArrowForwardIcon sx={{ fontSize: "36px" }} />}
+            endIcon={<ArrowForwardIcon sx={{ fontSize: "10px", fontWeight: 400 }} />}
             sx={{
               color: "text.secondary",
-              fontWeight: 600,
+              fontWeight: 400,
+              fontSize: "12px",
               "&:hover": {
                 backgroundColor: "transparent",
-                color: "text.primary",
+                color: "rgba(30, 41, 59, 1)",
               },
             }}
           >
@@ -265,14 +317,15 @@ export default function Integration() {
   );
 
   return (
-    <ThemeProvider theme={theme}>
+   <Stack alignItems={{xl: "center"}}>
+     <ThemeProvider theme={theme} >
       <CssBaseline />
-      <Box sx={{ py: { xs: 3, md: 5 } }} width={"958px"} mb={30}>
-        <Container maxWidth="lg">
+      <Box sx={{ py: { xs: 3, md: 5 } }} width={{md:"700px", lg:"958px"}}   mb={30}>
+        <Container maxWidth={"xl"}>
           {/* Header */}
           <Stack spacing={0.75} sx={{ mb: 2 }}>
-            <Typography variant="h4">Integrations</Typography>
-            <Typography variant="body2" color="text.secondary" sx={{color: "rgba(113, 113, 122, 1)"}}>
+            <Typography variant="h4" sx={{fontSize:"36px", fontWeight:600}}>Integrations</Typography>
+            <Typography pb={2} variant="body2" color="text.secondary" sx={{color: "rgba(113, 113, 122, 1)", fontSize:"18px", fontWeight:300}}>
               Select and connect tools you use to integrate with your workflow
             </Typography>
           </Stack>
@@ -293,30 +346,58 @@ export default function Integration() {
   size="small"
   sx={{
     backgroundColor: "background.paper",
+    gap: 0.2,
+    border: "1px solid rgba(212, 212, 216, 1)",
     "& .MuiToggleButton-root": {
       padding: "6px 8px",
       border: "none",
       borderRadius: "150px",
-      backgroundColor: "#ffff", // default bg
+      backgroundColor: "#fff", // default bg
       color: "black", // default icon
+       "& img": {
+          filter: "brightness(0) invert(0)", // make image white
+        },
       "&.Mui-selected": {
         backgroundColor: "rgba(253, 126, 20, 1)", // orange when selected
-        color: "white", // icon color white
+        color: "#fff", // text/icon color white
+        "& img": {
+          filter: "brightness(0) invert(1)", // make image white
+        },
         "&:hover": {
-          backgroundColor: "rgba(253, 126, 20, 1)", // keep orange on hover
+          backgroundColor: "rgba(253, 126, 20, 1)", // same on hover
         },
       },
-  
     },
     borderRadius: 2,
     overflow: "hidden",
   }}
 >
   <ToggleButton value="grid" aria-label="Grid view">
-    <ViewModule fontSize="small" />
+    <Box
+      component="img"
+      src="/integration/9.png"
+      alt="grid"
+      sx={{
+        width: 18,
+        height: 18,
+        borderRadius: "8px",
+        objectFit: "cover",
+      }}
+    />
   </ToggleButton>
+
   <ToggleButton value="list" aria-label="List view">
-    <ViewList fontSize="small" />
+    <Box
+      component="img"
+      src="/integration/8.png"
+      alt="list"
+      sx={{
+        width: 18,
+        height: 18,
+        borderRadius: "8px",
+        objectFit: "cover",
+      }}
+    />
   </ToggleButton>
 </ToggleButtonGroup>
 
@@ -331,30 +412,22 @@ export default function Integration() {
             <Grid container spacing={2}>
               {visible.map((item) => (
                 <Grid key={item.id} item xs={12} sm={6} md={4}>
-                  <IntegrationCard item={item} />
+                  <IntegrationCard view={view} item={item} />
                 </Grid>
               ))}
             </Grid>
           ) : (
             <Stack spacing={2}>
               {visible.map((item) => (
-                <IntegrationCard key={item.id} item={item} />
+                <IntegrationCard  view={view} key={item.id} item={item} />
               ))}
             </Stack>
           )}
 
-          {/* Reference image (hidden) */}
-          <Box
-            sx={{ position: "absolute", width: 0, height: 0, overflow: "hidden" }}
-          >
-            <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-FWT6tsIYOcpTaOd3j5PlocRUI8om0w.png"
-              alt="Reference screenshot for target design"
-              crossOrigin="anonymous"
-            />
-          </Box>
+          
         </Container>
       </Box>
     </ThemeProvider>
+   </Stack>
   );
 }
