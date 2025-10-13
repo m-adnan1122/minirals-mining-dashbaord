@@ -317,7 +317,7 @@ export default function Integration() {
   );
 
   return (
-   <Stack alignItems={{xl: "center"}}>
+   <Stack alignItems="center">
      <ThemeProvider theme={theme} >
       <CssBaseline />
       <Box sx={{ py: { xs: 3, md: 5 } }} width={{md:"700px", lg:"958px"}}   mb={30}>

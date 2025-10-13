@@ -128,7 +128,7 @@ export default function Third({
                    
                             sx={{
                     overflow: "hidden",
-      background: " radial-gradient(60% 60% at 75% 45%, rgba(255, 141, 46, 0.50) 40%, rgba(255, 180, 67, 0.18) 60%, rgba(255, 180, 67, 0) 65%)",
+      // background: " radial-gradient(60% 60% at 75% 45%, rgba(255, 141, 46, 0.50) 40%, rgba(255, 180, 67, 0.18) 60%, rgba(255, 180, 67, 0) 65%)",
                     display: "flex",
                     objectFit:"cover"
                   }}
