@@ -18,6 +18,9 @@ import {
 } from "@mui/material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
 const theme = createTheme({
   typography: {
@@ -55,6 +58,13 @@ const theme = createTheme({
         },
       },
     },
+    MuiSelect: {
+      styleOverrides: {
+        icon: {
+          color: "rgba(253, 126, 20, 1)", // dropdown arrow icon color
+        },
+      },
+    },
     MuiButton: {
       styleOverrides: {
         root: {
@@ -66,14 +76,26 @@ const theme = createTheme({
         },
       },
     },
+    MuiPickersDay: {
+    styleOverrides: {
+      root: {
+        // Selected date (when the calendar is opened and a date is already picked)
+        "&.Mui-selected": {
+          backgroundColor: "#0c8ce9  !important", // 🔥 your orange color
+          color: "#fff",
+        },
+
+        // Today’s date (the current day highlight)
+        "&.MuiPickersDay-today:not(.Mui-selected)": {
+          border: "1px solid rgba(253, 126, 20, 1)", // orange ring
+        },
+      },
+    },
+  },
   },
 });
 
-function Label({
-  children,
-  info,
-  rightAdornment,
-}) {
+function Label({ children, info, rightAdornment }) {
   return (
     <Box
       sx={{
@@ -83,9 +105,11 @@ function Label({
         mb: 0.75,
       }}
     >
-      <Box sx={{ display: "flex", alignItems: "center", gap: 0.5,  }}>
-        <Typography variant="body2" sx={{ fontWeight: 400, fontFamily:"outfit",
-    fontSize: '14px', }}>
+      <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+        <Typography
+          variant="body2"
+          sx={{ fontWeight: 400, fontFamily: "outfit", fontSize: "14px" }}
+        >
           {children}
         </Typography>
         {info ? (
@@ -113,11 +137,9 @@ export default function Page() {
     timeZone: "Central Time - US & Canada",
   });
 
-  const handleChange =
-    (key) =>
-    (e) => {
-      setForm((prev) => ({ ...prev, [key]: e.target.value }));
-    };
+  const handleChange = (key) => (e) => {
+    setForm((prev) => ({ ...prev, [key]: e.target.value }));
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -127,7 +149,10 @@ export default function Page() {
           <Grid container spacing={5}>
             {/* Left column */}
             <Grid item xs={12} md={8}>
-              <Box sx={{ display: "flex", flexDirection: "column", gap: 2.5 }} width={"450px"}>
+              <Box
+                sx={{ display: "flex", flexDirection: "column", gap: 2.5 }}
+                width={"450px"}
+              >
                 <Box>
                   <Label info="Your display name that appears in the app.">
                     Name
@@ -154,24 +179,42 @@ export default function Page() {
                   </TextField>
                 </Box>
 
-                <Box>
-                  <Label info="Used to personalize your experience.">
-                    Date Of Birth
-                  </Label>
-                  <TextField
-                    placeholder="MM/DD/YYYY"
-                    value={form.dob}
-                    onChange={handleChange("dob")}
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <CalendarMonthIcon sx={{ color: "text.secondary" }} />
-                        </InputAdornment>
-                      ),
-                      inputMode: "numeric",
-                    }}
-                  />
-                </Box>
+                {/* Date Picker Section */}
+         <Box>
+  <Label info="Used to personalize your experience.">
+    Date Of Birth
+  </Label>
+
+  <LocalizationProvider dateAdapter={AdapterDateFns}>
+    <DatePicker
+      value={form.dob ? new Date(form.dob) : null}
+      onChange={(newValue) =>
+        setForm((prev) => ({
+          ...prev,
+          dob: newValue ? newValue.toISOString() : "",
+        }))
+      }
+      slots={{
+        openPickerIcon: CalendarMonthIcon, // ✅ Use MUI’s built-in picker toggle icon
+      }}
+      slotProps={{
+        textField: {
+          placeholder: "MM/DD/YYYY",
+          fullWidth: true,
+          InputProps: {
+            sx: {
+                 bgcolor: "#fff",
+              "& .MuiSvgIcon-root": {
+                color: "rgba(253, 126, 20, 1)", // orange icon color
+              },
+            },
+          },
+        },
+      }}
+    />
+  </LocalizationProvider>
+</Box>
+
 
                 <Box>
                   <Label>Country</Label>
@@ -196,7 +239,7 @@ export default function Page() {
                 </Box>
 
                 <Box sx={{ mt: 1 }}>
-                  <Button variant="contained" color="error" sx={{boxShadow:"none"}}>
+                  <Button variant="contained" color="error" sx={{ boxShadow: "none" }}>
                     Delete Account
                   </Button>
                 </Box>
@@ -205,7 +248,10 @@ export default function Page() {
 
             {/* Right column */}
             <Grid item xs={12} md={6}>
-              <Box sx={{ display: "flex", flexDirection: "column", gap: 2.5 }} width={"450px"}>
+              <Box
+                sx={{ display: "flex", flexDirection: "column", gap: 2.5 }}
+                width={"450px"}
+              >
                 <Box>
                   <Label info="This message greets users or appears in your profile.">
                     Welcome Message
@@ -244,7 +290,11 @@ export default function Page() {
                     rightAdornment={
                       <Typography
                         variant="caption"
-                        sx={{ color: "primary.main", fontWeight: 400, pl:30 }}
+                        sx={{
+                          color: "primary.main",
+                          fontWeight: 400,
+                          pl: 30,
+                        }}
                       >
                         Current Time: 10:02pm
                       </Typography>
@@ -279,10 +329,28 @@ export default function Page() {
                     mt: 1,
                   }}
                 >
-                  <Button variant="contained" sx={{color:"#ffffff", boxShadow:"none", height:"46px", ":hover":{boxShadow:"none"}}} >
+                  <Button
+                    variant="contained"
+                    sx={{
+                      color: "#ffffff",
+                      boxShadow: "none",
+                      height: "46px",
+                      ":hover": { boxShadow: "none" },
+                    }}
+                  >
                     Save Changes
                   </Button>
-                  <Button variant="outlined" color="#1A1A1A" sx={{boxShadow:"none", height:"46px", ":hover":{boxShadow:"none"}}}>Cancel</Button>
+                  <Button
+                    variant="outlined"
+                    color="#1A1A1A"
+                    sx={{
+                      boxShadow: "none",
+                      height: "46px",
+                      ":hover": { boxShadow: "none" },
+                    }}
+                  >
+                    Cancel
+                  </Button>
                 </Box>
               </Box>
             </Grid>
