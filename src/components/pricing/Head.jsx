@@ -94,6 +94,7 @@ export default function Head({ selectedTab, setSelectedTab, setProfile }) {
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
             }}
+            onClick={()=> router.push("/")}
           />
 
           {/* Search Bar */}
@@ -151,7 +152,17 @@ export default function Head({ selectedTab, setSelectedTab, setProfile }) {
               borderRadius: "8px",
               fontSize: "14px",
               "& fieldset": { border: "none" },
-            }}
+               }}
+    MenuProps={{
+      disableScrollLock: true, // prevents body shift
+      PaperProps: {
+        sx: {
+          zIndex: 2000,   // make sure dropdown floats above Risk Map
+          width: 80,     // or match parent width
+        },
+      },
+    
+    }}
           >
             <MenuItem value="en">
               <Typography variant="body2" sx={{ color: "text.secondary" }}>

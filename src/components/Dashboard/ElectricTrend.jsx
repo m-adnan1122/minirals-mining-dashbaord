@@ -70,7 +70,6 @@ export default function ElectricTrend() {
         width: "1300px",
         height: "567px",
         mb: 9,
-        ml:3,
         mt: 2,
       }}
       aria-label="Electric Energy Consumption Trends"

@@ -7,34 +7,32 @@ import React from "react"
 const highlightItems = [
     {
       title: "Gold",
-      description:
-        "Sunny mineral-rich terrains, gold-veined opportunities. See early mover signals and model trends for industry insights.",
+      description:"Survey mineral-rich terrains, and unveil opportunities. Stay updated with real-time gold news, delve into social media trends for industry insights.",
       imageSrc: "/01.png",
     },
     {
       title: "Copper Ore",
-      description:
-        "The latest breakthrough in the copper industry. Drive the transition through scalable processing insights.",
+      description:"The latest breakthroughs in the copper industry, delve into social media dialogues to track emerging trends, and employ advanced document analysis for strategic insights.",
       imageSrc: "/02.png",
     },
     {
       title: "Lithium Ore",
-      description: "Quick insight into the latest lithium market trends. Industry updates, sources, and price moves.",
+      description:"Stay charged with the latest buzz in global lithium power interest through real-time industry updates, trending social media discussions, and predictive",
       imageSrc: "/03.png",
     },
     {
       title: "Ruby",
-      description: "Astonishing color for specialized applications. Track sourcing signals for dynamic pricing.",
+      description: "Trusted companies on our platform adhere to stringent security standards, creating a seamless and protected transaction environment.",
       imageSrc: "/04.png",
     },
     {
       title: "Emerald",
-      description: "Green-lit signals on the platform. Identify the demand skyline to ensure optimum valuation.",
+      description: "Ccompanies on our platform adhere to top-notch security standards, crafting a shielded and fluid environment for your transactions. Immerse yourself in the secure charm of blockchain transactions,",
       imageSrc: "/05.png",
     },
     {
       title: "Sapphire",
-      description: "High-performance elements meeting precision markets. Optimize valuation with timely signals.",
+      description: "Our commitment extends beyond security, with a system exclusively featuring licensed operators and all trades securely recorded on the blockchain while engaging with distinguished companies on our platform.",
       imageSrc: "/06.png",
     },
   ]
@@ -78,72 +76,8 @@ export default function Seventh({
   }
 
   return (
-    <Box component="section" sx={{ position: "relative", bgcolor: DARK, color: WHITE }}>
-      {/* Decorative corner images */}
-      {!!cornerImages.topLeft && (
-        <img
-          src={cornerImages.topLeft || "/placeholder.svg"}
-          alt=""
-          aria-hidden
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: 140,
-            height: "auto",
-            pointerEvents: "none",
-          }}
-          crossOrigin="anonymous"
-        />
-      )}
-      {!!cornerImages.topRight && (
-        <img
-          src={cornerImages.topRight || "/placeholder.svg"}
-          alt=""
-          aria-hidden
-          style={{
-            position: "absolute",
-            top: 0,
-            right: 0,
-            width: 140,
-            height: "auto",
-            pointerEvents: "none",
-          }}
-          crossOrigin="anonymous"
-        />
-      )}
-      {!!cornerImages.bottomLeft && (
-        <img
-          src={cornerImages.bottomLeft || "/placeholder.svg"}
-          alt=""
-          aria-hidden
-          style={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            width: 140,
-            height: "auto",
-            pointerEvents: "none",
-          }}
-          crossOrigin="anonymous"
-        />
-      )}
-      {!!cornerImages.bottomRight && (
-        <img
-          src={cornerImages.bottomRight || "/placeholder.svg"}
-          alt=""
-          aria-hidden
-          style={{
-            position: "absolute",
-            bottom: 0,
-            right: 0,
-            width: 140,
-            height: "auto",
-            pointerEvents: "none",
-          }}
-          crossOrigin="anonymous"
-        />
-      )}
+    <Box component="section" sx={{  bgcolor: DARK, color: WHITE }}>
+     
 
       <Box
         sx={{
@@ -229,7 +163,7 @@ export default function Seventh({
 
       {/* Signup Section */}
       {showSignup && (
-        <Box sx={{ bgcolor: ORANGE, color: DARK, py: { xs: 4, sm: 6 } }}>
+        <Box pl={2} sx={{ bgcolor: "rgba(253, 126, 20, 1)", color: DARK, py: { xs: 4, sm: 6 } }}>
           <Box
             sx={{
               maxWidth: 1200,
@@ -279,16 +213,19 @@ export default function Seventh({
               <Button
                 type="submit"
                 variant="contained"
-                sx={{
+                             sx={{
                   bgcolor: DARK,
                   color: WHITE,
                   "&:hover": { bgcolor: "#000" },
                   px: 5,
                   py:0.5,
+                  height:"42px",
                   borderRadius:"9px",
                   whiteSpace: "nowrap",
+                  fontWeight:400,
+                  fontSize:"15px",
+                  mt:1
                 }}
-                aria-label={buttonLabel}
               >
                 {"Subscibe Now"}
               </Button>
@@ -296,6 +233,8 @@ export default function Seventh({
           </Box>
         </Box>
       )}
+
+      
     </Box>
   )
 }

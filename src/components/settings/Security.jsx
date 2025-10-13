@@ -121,8 +121,9 @@ export default function Security() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-        <Container  sx={{ py: { xs: 3, md: 4 } }}>
+    <Stack alignItems={{xl: "center"}}>
+      <ThemeProvider theme={theme}>
+        <Container  maxWidth={"lg"} al sx={{ py: { xs: 3, md: 4 } }}>
           <Stack spacing={2.5} width={"654px"}>
             {/* Username */}
             <Box>
@@ -249,18 +250,17 @@ export default function Security() {
               </Typography>
             </Box>
 
-            <Divider sx={{ my: 0.5 }} />
 
             {/* Actions */}
             <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 1.5 }}>
-              <Button variant="contained" color="primary"   sx={{ color: "#ffff" }} // text color
+              <Button variant="contained" color="primary"   sx={{color:"#fff", boxShadow:"none", height:"46px", ":hover":{boxShadow:"none"}}} // text color
 >
                 Save Changes
               </Button>
-              <Button variant="outlined">Cancel</Button>
             </Box>
           </Stack>
         </Container>
     </ThemeProvider>
+    </Stack>
   )
 }
