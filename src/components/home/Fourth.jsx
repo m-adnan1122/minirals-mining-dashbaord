@@ -7,7 +7,7 @@ export const Fourth = () => {
             <Box
               component="img"
               width={{md:"700px",lg:"1000px", xl:"1400px"}}
-              src={"/group2.png"}
+              src={"/Group2.png"}
               sx={{
                 display: "block",
                 color:"#fff",
